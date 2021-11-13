@@ -19,9 +19,17 @@
 
     <script>
 
-        const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";
-        const category = "electric%20vehicle%20station";
-        const limit = 100;
+     // API fetch link GEOCODE examle:  https://api.tomtom.com/search/2/geocode/ulbeek.json?key=dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc
+        
+    // API fetch link CATEGORY SEARCH example: https://api.tomtom.com/search/2/categorySearch/electric%20vehicle%20station.json?limit=100&lat=37.337&lon=-121.89&key=dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc
+
+        // =============== API PARAMETERS AND KEY =======================
+
+        const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc"; // API Key
+        const category = "electric%20vehicle%20station"; // filter for all electric vehicle stations used in api
+        const limit = 100;  // limit is the amount of search results
+
+        // ================= GET Latidude and Longitude bases on address text input =================
 
         function getLocationName() {
             const location = document.getElementById("location");
@@ -41,6 +49,8 @@
             }
         }
 
+        // ============== GET Electrice Vehicle Station locations bases on the latitude and longitude values
+
         async function fetchEvStation(lat, lon) {
             try {
                 const response = await fetch("https://api.tomtom.com/search/2/categorySearch/" + category + ".json?limit=" + limit + "&lat=" + lat + "&lon=" + lon + "&key=" + key);
@@ -53,6 +63,8 @@
             }
         }
 
+
+        // ============= Putting API data into HTML table =====================
 
         const putData = data => {
             let table = `
@@ -77,10 +89,6 @@
             document.getElementById("myTable").innerHTML = table;
         }
         
-        // API fetch link GEOCODE:  https://api.tomtom.com/search/2/geocode/ulbeek.json?key=dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc
-        
-        // API fetch link CATEGORY SEARCH : https://api.tomtom.com/search/2/categorySearch/electric%20vehicle%20station.json?limit=100&lat=37.337&lon=-121.89&key=dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc
-
     </script>
 </body>
 </html>
