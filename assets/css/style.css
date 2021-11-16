@@ -88,6 +88,10 @@ body {
     margin-right: 35px;
 }
 
+.hamburger {
+    font-size: 28px;
+}
+
 
 @media screen and (min-width: 750px) {
  .hamburger {
@@ -99,7 +103,8 @@ body {
  }
  .closing {
      display: none;
- }   
+ }
+ 
 }
 
 
