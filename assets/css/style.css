@@ -33,10 +33,6 @@ body {
     color: #f6c03f;
 }
 
-.application {
-    position: relative;
-}
-
 
 .content-row {
     min-height: 635px;
@@ -125,6 +121,7 @@ body {
         left: 0;
         width: 100%;
         transition: 0.4s;
+        z-index: 1;
     }
     .nav-resp a {
         margin-top: 15px;
