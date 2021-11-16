@@ -6,15 +6,11 @@
 }
 
 body {
-    background-image: url("../images/pexels-pixabay-315938.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
     color: white;
 }
 
 .navbar {
-    background-color: #2f2f8d3d;;
+    background-color: #0D1E50;
 }
 
 .navbar a {
