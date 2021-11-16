@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 * {
     margin: 0;
@@ -106,7 +106,6 @@ body {
  }
  
 }
-
 
 @media screen and (max-width: 749px) {
     .nav-resp {
