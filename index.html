@@ -18,9 +18,13 @@
         <div class="container-fluid">
           <a class="navbar-brand text-light"><i class="fas fa-car-side"></i> EV On The Go</a>
           <div class="links d-flex justify-content-between">
-            <a href="#" class="toggle" id="sidebarlink">SideBar Test </a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About us</a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
+            <div class="nav-resp" id="topbar">
+              <a href="#" class="toggle" id="sidebarlink">SideBar Test </a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About us</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
+              <a href="#" id="closeTopBar"><i class="closing fas fa-times"></i></a>
+            </div>
+            <a href="#" id="hamburgericon"><i class="hamburger fas fa-bars"></i></a>
           </div>
         </div>
         <!-- About Us Modal -->
@@ -62,10 +66,10 @@
     <section class="application">
         <div class="container-fluid">
             <div class="content-row row">
-            <div class="col-3 left-pane">
+            <div class="col-xl-3 left-pane">
                 form here
             </div>
-            <div class="col-9 right-pane border-start border-dark">
+            <div class="col-xl-9 right-pane border-start border-dark">
             </div>
             </div>
         </div>
