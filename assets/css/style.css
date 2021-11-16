@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url("/assets/images/pexels-pixabay-315938.jpg");
+    background-image: url("../images/pexels-pixabay-315938.jpg");
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -67,7 +67,7 @@ body {
 }
 
 .right-pane{
-    background: url("/assets/images/2021-11-15_22-22-04.png")
+    background: url("../images/2021-11-15_22-22-04.png")
 }
 
 .footer-row {
