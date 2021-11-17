@@ -39,8 +39,7 @@
       <a class="navbar-brand text-light"><i class="fas fa-car-side"></i> EV On The Go</a>
       <div class="links d-flex justify-content-between">
         <div class="nav-resp" id="topbar">
-          <!-- only a temporary button for testing routing !-->
-          <a href="#" onclick="createRoute(departurePoint, arrivalPoint);">Example Route</a>
+          <!-- only a temporary button for testing sidebar !-->
           <a href="#" class="toggle" id="sidebarlink">SideBar Test </a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#aboutModal">About us</a>
           <a href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Help</a>
@@ -88,7 +87,7 @@
   <section class="application">
     <div class="container-fluid">
       <div class="content-row row">
-        <div class="col-xl-3 left-pane p-4">
+        <div class="col-lg-3 left-pane p-4">
           <div class="sidebar" id="sidebar">
             <a href="#" id="close"><i class="fas fa-times"></i></a>
             <p>Charging Station Information</p>
@@ -131,9 +130,9 @@
           <hr>
           <button class="form-control" onclick="submit()">Bereken Route</button>
         </div>
-        <div class="col-xl-9 right-pane border-start border-dark">
+        <div class="col-lg-9 right-pane border-start border-dark">
           <div class="mymap" id="mymap">
-            map here
+            
           </div>
         </div>
       </div>
