@@ -4,6 +4,7 @@ const close = document.getElementById('close');
 const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
+const examplePlace = [5.305940, 50.842289];
 var output;
 fetchData(url);
 
@@ -66,5 +67,7 @@ if(closeTopBar) {
 
 let map = tt.map({
     key: key,
-    container: "mymap"
+    container: "mymap",
+    center: examplePlace,
+    zoom: 10
 });
