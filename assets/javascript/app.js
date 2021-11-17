@@ -69,5 +69,35 @@ let map = tt.map({
     key: key,
     container: "mymap",
     center: examplePlace,
-    zoom: 10
+    zoom: 10,
+    style: "https://api.tomtom.com/style/1/style/21.1.0-*?map=basic_main&traffic_incidents=incidents_day&traffic_flow=flow_relative0&poi=poi_main",
+    
 });
+
+/* ============================ calculate route ==============================*/
+
+const createRoute = function() {
+    tt.services.calculateRoute({
+        key: key,
+        locations: '5.305940,50.842289:2.913830,51.225159' // ATTENTION order is first longitude then latitude !!    
+    }).then(function(routeData) {
+        let geo = routeData.toGeoJson();
+        displayRoute(geo)
+    });
+}
+
+
+var displayRoute = function(geoJSON) {
+    routeLayer = map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': {
+            'type': 'geojson',
+            'data': geoJSON
+        },
+        'paint': {
+            'line-color': 'red',
+            'line-width': 5
+        }
+    })
+}
