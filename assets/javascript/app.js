@@ -60,3 +60,11 @@ if(closeTopBar) {
         topBar.classList.remove('show-topbar');
     })
 }
+
+
+/* ============================== map integration ===============================*/
+
+let map = tt.map({
+    key: key,
+    container: "mymap"
+});
