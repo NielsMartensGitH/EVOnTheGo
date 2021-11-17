@@ -1,12 +1,13 @@
 /* ============ API VARIABLES ===================*/
 
-const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";
+const key = "MKB8TegqvUZ7OxWFWLC5zRepju2cstNK";  // dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc 2nd key when limit fetches has reached
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
 const initialPlace = [5.305940, 50.842289]; // place map displays first when opening app
 const departurePoint = "5.305940,50.842289"; // Ulbeek EXAMPLE ONLY!
 const arrivalPoint = "2.913830,51.225159"; // Oostende EXAMPLE ONLY!
 var beginlat,beginlon,eindelat,eindelon,distance;
+var markers = [];
 
 /* ========== SIDEBAR TOGGLE================*/
 
@@ -29,6 +30,7 @@ if(close) {
 
 
 function submit(){
+    removePreviousLayer();
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
     connector = document.getElementById("connector").value;
@@ -130,13 +132,23 @@ async function fetchStations(lon,lat) {
             let lon = element.position.lon;
             let lat = element.position.lat;
             loc = [lon,lat];
-            let marker  = new tt.Marker().setLngLat(loc).addTo(map);
+            let marker  = new tt.Marker({
+                "color": "#0D1E50"
+            })
+            .setLngLat(loc)
+            .addTo(map);
+            markers.push(marker)
         });
+
+        
+        
         
     } catch (error) {
         console.log(error);
     }
+    console.log(markers)
 }
+
 
 
 /* ========== TOPBAR TOGGLE================*/
@@ -195,4 +207,19 @@ var displayRoute = function(geoJSON) {
             'line-width': 5
         }
     })
+}
+
+function removePreviousLayer() {
+    for (marker of markers) {
+        marker.remove();
+    }
+
+    try {
+        map.removeLayer("route");
+        map.removeSource("route");
+    }
+    catch(error) {
+        console.log(error)
+    }
+    
 }
