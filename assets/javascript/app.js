@@ -1,12 +1,19 @@
-const sideBar = document.getElementById('sidebar');
-const sideBarLink = document.getElementById('sidebarlink');
-const close = document.getElementById('close');
+/* ============ API VARIABLES ===================*/
+
 const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
-const examplePlace = [5.305940, 50.842289]; // From Ulbeek to Oostende
+const initialPlace = [5.305940, 50.842289]; // place map displays first when opening app
+const departurePoint = "5.305940,50.842289"; // Ulbeek EXAMPLE ONLY!
+const arrivalPoint = "2.913830,51.225159"; // Oostende EXAMPLE ONLY!
 var output;
 fetchData(url);
+
+/* ========== SIDEBAR ================*/
+
+const sideBar = document.getElementById('sidebar');
+const sideBarLink = document.getElementById('sidebarlink');
+const close = document.getElementById('close');
 
 if(sideBarLink) {
     sideBarLink.addEventListener('click', () => {
@@ -68,7 +75,7 @@ if(closeTopBar) {
 let map = tt.map({
     key: key,
     container: "mymap",
-    center: examplePlace,
+    center: initialPlace,
     zoom: 10,
     style: "https://api.tomtom.com/style/1/style/21.1.0-*?map=basic_main&traffic_incidents=incidents_day&traffic_flow=flow_relative0&poi=poi_main",
     
@@ -76,17 +83,17 @@ let map = tt.map({
 
 /* ============================ calculate route ==============================*/
 
-const createRoute = function() {
+const createRoute = function(departure, arrival) {
     tt.services.calculateRoute({
         key: key,
-        locations: '5.305940,50.842289:2.913830,51.225159' // ATTENTION order is first longitude then latitude !!    
+        locations: `${departure}:${arrival}` // ATTENTION order is first longitude then latitude !!    
     }).then(function(routeData) {
         let geo = routeData.toGeoJson();
         displayRoute(geo)
     });
 }
 
-/* DISPLAY ROUTE WITH LINE */
+/* ================= DISPLAY ROUTE WITH LINE  ================== */
 
 
 var displayRoute = function(geoJSON) {
