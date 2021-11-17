@@ -8,7 +8,7 @@ const departurePoint = "5.305940,50.842289"; // Ulbeek EXAMPLE ONLY!
 const arrivalPoint = "2.913830,51.225159"; // Oostende EXAMPLE ONLY!
 var beginlat,beginlon,eindelat,eindelon,distance;
 
-/* ========== SIDEBAR ================*/
+/* ========== SIDEBAR TOGGLE================*/
 
 const sideBar = document.getElementById('sidebar');
 const sideBarLink = document.getElementById('sidebarlink');
@@ -25,6 +25,9 @@ if(close) {
         sideBar.classList.remove('show-sidebar')
     })
 }
+
+
+
 function submit(){
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
@@ -97,6 +100,7 @@ async function fetchRoute() {
             let loc = [lon,lat];
             test.push(lon+"|"+lat);
         }
+
         var i = 0;
         function myLoop() {         
           setTimeout(function() {   
@@ -133,6 +137,9 @@ async function fetchStations(lon,lat) {
         console.log(error);
     }
 }
+
+
+/* ========== TOPBAR TOGGLE================*/
 
 const topBar = document.getElementById("topbar");
 const hamburgerIcon = document.getElementById("hamburgericon");
