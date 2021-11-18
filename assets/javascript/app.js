@@ -166,14 +166,17 @@ async function fetchStations(lon,lat) {
             markers.push(marker)
             }
 
+            let poi = element.poi.name;
+            let address = element.address.freeformAddress; 
+
             let markerFunc = createMarker(loc,
             new tt.Popup({
                 offset: 35
             }).setHTML(`
             <div style="color: black;">
-            <h5>${element.poi.name}</h5>
-            <p>${element.address.freeformAddress}</p>
-            <a href="#" onClick="openSideBarFromMap()">More info</a>
+            <h5>${poi}</h5>
+            <p>${address}</p>
+            <a href="#" onClick="openSideBarFromMap()">Charging Station Info</a>
             </div>
             `))
             
@@ -191,9 +194,11 @@ async function fetchStations(lon,lat) {
     console.log(markers)
 }
 
+/* =============== function to open sidebar when clicking on link in marker popup =======================*/
 
 function openSideBarFromMap() {
     sideBar.classList.add('show-sidebar')
+    document.getElementById("info").innerHTML = "here comes charging station info!";
 }
 
 /* ============================== map integration ===============================*/
