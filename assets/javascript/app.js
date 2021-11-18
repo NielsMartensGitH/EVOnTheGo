@@ -9,6 +9,24 @@ const arrivalPoint = "2.913830,51.225159"; // Oostende EXAMPLE ONLY!
 var beginlat,beginlon,eindelat,eindelon,distance;
 var markers = [];
 
+/* ========== TOPBAR TOGGLE================*/
+
+const topBar = document.getElementById("topbar");
+const hamburgerIcon = document.getElementById("hamburgericon");
+const closeTopBar = document.getElementById("closeTopBar");
+
+if(hamburgerIcon) {
+    hamburgerIcon.addEventListener("click", () => {
+        topBar.classList.add('show-topbar');
+    })
+}
+
+if(closeTopBar) {
+    closeTopBar.addEventListener('click', () => {
+        topBar.classList.remove('show-topbar');
+    })
+}
+
 /* ========== SIDEBAR TOGGLE================*/
 
 const sideBar = document.getElementById('sidebar');
@@ -26,7 +44,6 @@ if(close) {
         sideBar.classList.remove('show-sidebar')
     })
 }
-
 
 
 function submit(){
@@ -139,10 +156,9 @@ async function fetchStations(lon,lat) {
 
             function createMarker(markerCoordinates, popup) {
                 let markerElement = document.createElement("div");
-                markerElement.innerHTML = '<i style="color: blue;" class="fas fa-charging-station"></i>'; 
+                markerElement.innerHTML = '<i style="color: #0D1E50;" class="fas fa-charging-station"></i>'; 
                 let marker  = new tt.Marker({
-                    "element": markerElement,
-                    "color": "#0D1E50"
+                    "element": markerElement
             })
             .setLngLat(markerCoordinates)
             .setPopup(popup)
@@ -157,7 +173,7 @@ async function fetchStations(lon,lat) {
             <div style="color: black;">
             <h5>${element.poi.name}</h5>
             <p>${element.address.freeformAddress}</p>
-            <a href="#">More info</a>
+            <a href="#" onClick="openSideBarFromMap()">More info</a>
             </div>
             `))
             
@@ -176,23 +192,8 @@ async function fetchStations(lon,lat) {
 }
 
 
-
-/* ========== TOPBAR TOGGLE================*/
-
-const topBar = document.getElementById("topbar");
-const hamburgerIcon = document.getElementById("hamburgericon");
-const closeTopBar = document.getElementById("closeTopBar");
-
-if(hamburgerIcon) {
-    hamburgerIcon.addEventListener("click", () => {
-        topBar.classList.add('show-topbar');
-    })
-}
-
-if(closeTopBar) {
-    closeTopBar.addEventListener('click', () => {
-        topBar.classList.remove('show-topbar');
-    })
+function openSideBarFromMap() {
+    sideBar.classList.add('show-sidebar')
 }
 
 /* ============================== map integration ===============================*/
