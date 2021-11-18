@@ -1,6 +1,6 @@
 /* ============ API VARIABLES ===================*/
 
-const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";  //  MKB8TegqvUZ7OxWFWLC5zRepju2cstNK 2nd key when limit fetches has reached
+const key = "MKB8TegqvUZ7OxWFWLC5zRepju2cstNK";  // dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc 2nd key when limit fetches has reached
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
 const initialPlace = [5.305940, 50.842289]; // place map displays first when opening app
@@ -122,6 +122,10 @@ async function fetchRoute() {
     }
 }
 
+
+/* =============== ADD MARKER POPUP ================== */
+
+
 async function fetchStations(lon,lat) {
     try {
         const response = await fetch(url+ "&lat="+lat+"&lon="+lon+"&radius=2500&limit=2");
@@ -132,12 +136,34 @@ async function fetchStations(lon,lat) {
             let lon = element.position.lon;
             let lat = element.position.lat;
             loc = [lon,lat];
-            let marker  = new tt.Marker({
-                "color": "#0D1E50"
+
+            function createMarker(markerCoordinates, popup) {
+                let markerElement = document.createElement("div");
+                markerElement.innerHTML = '<i style="color: blue;" class="fas fa-charging-station"></i>'; 
+                let marker  = new tt.Marker({
+                    "element": markerElement,
+                    "color": "#0D1E50"
             })
-            .setLngLat(loc)
+            .setLngLat(markerCoordinates)
+            .setPopup(popup)
             .addTo(map);
             markers.push(marker)
+            }
+
+            let markerFunc = createMarker(loc,
+            new tt.Popup({
+                offset: 35
+            }).setHTML(`
+            <div style="color: black;">
+            <h5>${element.poi.name}</h5>
+            <p>${element.address.freeformAddress}</p>
+            <a href="#">More info</a>
+            </div>
+            `))
+            
+            marker.togglePopup()
+
+            
         });
 
         
