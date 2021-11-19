@@ -198,12 +198,11 @@ async function fetchStations(lon,lat) {
 
 async function showChargingInfo(id) {
     try {
-        document.getElementById("info").innerHTML = "";
+        document.getElementById("info").innerHTML = ""; 
         const fullId = "0" + id; 
         const response = await fetch("https://api.tomtom.com/search/2/chargingAvailability.json?chargingAvailability=" + fullId + "&key=" + key);
         const data = await response.json();
         const connectors = data.connectors;
-        console.log(connectors)
         connectors.forEach(connector => {
             document.getElementById("info").innerHTML += `${connector.type} <br>`;
         })
