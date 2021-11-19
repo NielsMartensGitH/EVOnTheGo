@@ -140,9 +140,6 @@ async function fetchRoute() {
 }
 
 
-/* =============== ADD MARKER POPUP ================== */
-
-
 async function fetchStations(lon,lat) {
     try {
         const response = await fetch(url+ "&lat="+lat+"&lon="+lon+"&radius=2500&limit=2");
@@ -165,9 +162,12 @@ async function fetchStations(lon,lat) {
             .addTo(map);
             markers.push(marker)
             }
-
+            console.log(element)
             let poi = element.poi.name;
-            let address = element.address.freeformAddress; 
+            let address = element.address.freeformAddress;
+            let chargingAvailabilityId = element.dataSources.chargingAvailability.id; 
+
+            // CREATE POPUP WITH TEXT
 
             let markerFunc = createMarker(loc,
             new tt.Popup({
@@ -176,7 +176,7 @@ async function fetchStations(lon,lat) {
             <div style="color: black;">
             <h5>${poi}</h5>
             <p>${address}</p>
-            <a href="#" onClick="openSideBarFromMap()">Charging Station Info</a>
+            <a href="#" onClick="showChargingInfo(${chargingAvailabilityId})">Charging Station Info</a>
             </div>
             `))
             
@@ -191,14 +191,28 @@ async function fetchStations(lon,lat) {
     } catch (error) {
         console.log(error);
     }
-    console.log(markers)
+    console.log(markers);
 }
 
-/* =============== function to open sidebar when clicking on link in marker popup =======================*/
+/* =============== function to show charging info in sidebar when clicking on link in marker popup=======================*/
 
-function openSideBarFromMap() {
-    sideBar.classList.add('show-sidebar')
-    document.getElementById("info").innerHTML = "here comes charging station info!";
+async function showChargingInfo(id) {
+    try {
+        document.getElementById("info").innerHTML = "";
+        const fullId = "0" + id; 
+        const response = await fetch("https://api.tomtom.com/search/2/chargingAvailability.json?chargingAvailability=" + fullId + "&key=" + key);
+        const data = await response.json();
+        const connectors = data.connectors;
+        console.log(connectors)
+        connectors.forEach(connector => {
+            document.getElementById("info").innerHTML += `${connector.type} <br>`;
+        })
+        sideBar.classList.add('show-sidebar')
+        document.getElementById("info").innerHTML += `ID: ${fullId}`;
+    }
+    catch(error) {
+        console.log(error);
+    }
 }
 
 /* ============================== map integration ===============================*/
