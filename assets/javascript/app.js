@@ -1,6 +1,6 @@
 /* ============ API VARIABLES ===================*/
 
-const key = "MKB8TegqvUZ7OxWFWLC5zRepju2cstNK";  // dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc 2nd key when limit fetches has reached
+const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";  // MKB8TegqvUZ7OxWFWLC5zRepju2cstNK 2nd key when limit fetches has reached
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
 const initialPlace = [5.305940, 50.842289]; // place map displays first when opening app
@@ -50,7 +50,7 @@ function submit(){
     removePreviousLayer();
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
-    connector = document.getElementById("connector").value;
+    connectorType = document.getElementById("connector").value;
     kabel = document.getElementById("kabel").checked;
 /*
     console.log("Begin: "+begin);
@@ -200,7 +200,7 @@ async function fetchStations(lon,lat) {
 async function showChargingInfo(id) {
     try {
         document.getElementById("info").innerHTML = ""; 
-        const fullId = "0" + id; 
+        const fullId = "0" + id; // need fixing because not all numbers start with zero!!!! 
         const response = await fetch("https://api.tomtom.com/search/2/chargingAvailability.json?chargingAvailability=" + fullId + "&key=" + key);
         const data = await response.json();
         const connectors = data.connectors;
