@@ -209,17 +209,19 @@ async function showChargingInfo(id) {
             <b>Type:</b> ${connector.type} <br>
             <b>Total Charging points:</b> ${connector.total}<br>`;
             let powerLevel = connector.availability.perPowerLevel;
-            console.log(powerLevel);    
-            document.getElementById("info").innerHTML += `
-            <b>PowerKW:</b> ${powerLevel[0].powerKW} <br>
-            <b>Available:</b> ${powerLevel[0].available} <br>
-            <b>Occupied:</b> ${powerLevel[0].occupied} <br>
-            <b>Reserved:</b> ${powerLevel[0].reserved} <br>
-            <b>Out Of Service:</b> ${powerLevel[0].outOfService} <br>
-            <b>Unknown:</b> ${powerLevel[0].unknown} <br>
-            <hr> 
-            `
-
+            console.log(powerLevel);  
+            powerLevel.forEach(level => {
+                document.getElementById("info").innerHTML += `
+                <b>PowerKW:</b> ${level.powerKW} <br>
+                <b>Available:</b> ${level.available} <br>
+                <b>Occupied:</b> ${level.occupied} <br>
+                <b>Reserved:</b> ${level.reserved} <br>
+                <b>Out Of Service:</b> ${level.outOfService} <br>
+                <b>Unknown:</b> ${level.unknown} <br>
+                <br> 
+                `
+            })  
+                document.getElementById("info").innerHTML += `<hr>`
         })
         sideBar.classList.add('show-sidebar')
         document.getElementById("info").innerHTML += `ID: ${fullId}`;
