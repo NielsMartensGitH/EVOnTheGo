@@ -57,7 +57,7 @@ function submit(){
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
     // connectorType = document.getElementById("connector").value;
-    kabel = document.getElementById("kabel").checked;
+    // kabel = document.getElementById("kabel").checked;
 /*
     console.log("Begin: "+begin);
     console.log("Einde: "+einde);

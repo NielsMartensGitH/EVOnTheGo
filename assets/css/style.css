@@ -10,6 +10,19 @@
 body {
     color: white;
     font-family: 'Roboto', sans-serif;
+    background-color: black;
+}
+
+h4 {
+    margin-top: 8px;
+}
+
+.logo {
+    margin: 3px 0 3px 40px
+}
+
+.logo i {
+    margin-right: 5px;
 }
 
 .navbar {
@@ -35,15 +48,17 @@ body {
 
 
 .content-row {
-    min-height: 635px;
-    background-color: #ffffff42;
+    background-color: black;
+    margin: 30px;
 }
 
 .left-pane {
-    background-color: #e8e5e5;
+    background-color: #d5d8de;
     color: black;
     position: relative;
+    border-radius: 15px;
 }
+
 
 .multi-selector{
     width: 100%;
@@ -97,10 +112,15 @@ body {
     height: 100%;
     z-index: 10;
     top: 0;
-    left: -100%;
+    left: -115%;
     transition: 0.4s;
     color: black;
     overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 15px;
+    background-color:whitesmoke;
+    border-radius: 15px;
 }
 
 .sidebar a {
@@ -120,7 +140,7 @@ body {
 }
 
 .footer-row {
-    min-height: 55px;
+    /* min-height: 100%; */
     background-color: #030202;
 }
 
@@ -178,17 +198,21 @@ body {
         top: 0;
         transition: 0.4s;
     }
+    .content-row {
+        margin: 0
+    }
 }
 
 @media screen and (max-width: 992px) {
     .right-pane {
-        height: auto;;
+        height: auto;
     }
     #mymap {
         /* height: 0;
         width: 0; */
-        height: 100vh;
-        width: 100vw;
+        height: 50vh;
+        width: 100%;
+        margin-top: 5px;
     }
 }
 
