@@ -89,9 +89,17 @@ async function fetchBegin(begin) {
         const data = await response.json();
         beginlat = data.results[0].position.lat;
         beginlon = data.results[0].position.lon;
+        moveMap(data.results[0].position)
     } catch (error) {
         console.log(error);
     }
+}
+
+function moveMap(lnglat) {
+    map.flyTo({
+        center: lnglat,
+        zoom: 10
+    })
 }
 
 async function fetchEinde(einde) {
@@ -178,16 +186,9 @@ async function fetchStations(lon,lat) {
             <p>${address}</p>
             <a href="#" onClick="showChargingInfo(${chargingAvailabilityId})">Charging Station Info</a>
             </div>
-            `))
-            
+            `))            
             marker.togglePopup()
-
-            
-        });
-
-        
-        
-        
+        });        
     } catch (error) {
         console.log(error);
     }
@@ -265,7 +266,7 @@ var displayRoute = function(geoJSON) {
             'line-color': 'red',
             'line-width': 5
         }
-    })
+    }).flyTo()
 }
 
 function removePreviousLayer() {
