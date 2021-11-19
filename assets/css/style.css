@@ -45,6 +45,51 @@ body {
     position: relative;
 }
 
+.multi-selector{
+    width: 100%;
+    position: relative;
+    height: auto;
+}
+.select-field{
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+}
+.select-field,.con,.list{
+    width: 100%;
+    background-color: white;
+    padding: 0.3rem;
+    border: none;
+}
+
+.list{
+    display: none;  
+    max-height: 140px;
+    overflow: scroll;
+    overflow-x: hidden; 
+    
+}
+
+.list input {
+    margin-right: 5px;
+}
+
+.con{
+    display: block;
+    padding-left: 0;
+}
+
+.con:hover{
+    background-color: aliceblue;
+}
+.show-dropdown{
+    display: block;
+    position: absolute;
+    top: 46px;
+    left: 0;
+    z-index: 1;
+    padding-left: 5px;
+}
+
 .sidebar {
     position: absolute;
     background-color: white;
@@ -147,7 +192,10 @@ body {
     }
 }
 
-
+.select-field input[type="text"]:disabled {
+    background: white;
+    border: none;
+  }
 
 
 /* background-color: #4b547a66; */

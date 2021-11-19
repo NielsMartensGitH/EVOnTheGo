@@ -99,22 +99,52 @@
           <h4>Einde</h4>
           <input type="text" id="einde" class="form-control">
           <h4>Connector type</h4>
-          <select name="connector" id="connector" class="form-control">
-            <option value="con1">IEC62196Type2CableAttached</option>
-            <option value="con2">IEC62196Type2Outlet</option>
-            <option value="con3">IEC62196Type2CCS</option>
-            <option value="con4">Tesla</option>
-            <option value="con5">Chademo</option>
-            <option value="con6">IEC62196Type1</option>
-            <option value="con7">IEC62196Type1CCS</option>
-            <option value="con8">IEC62196Type3</option>
-            <option value="con9">GBT20234Part2</option>
-            <option value="con10">GBT20234Part3</option>
-            <option value="con11">IEC60309AC3PhaseRed</option>
-            <option value="con12">IEC60309AC1PhaseBlue</option>
-            <option value="con13">IEC60309DCWhite</option>
-            <option value="con14">StandardHouseholdCountrySpecific</option>
-          </select>
+          <div class="multi-selector">
+            <div class="select-field">
+              <input type="text" placeholder="Choose Connector Type" disabled="disabled" class="input-selector form-control">
+              <!-- <span class="down-arrow">&blacktriangledown;</span> -->
+            </div>
+            <div class="list">
+              <label for="con1" class="con form-control">
+              <input type="checkbox" id="con1">IEC62196Type2CableAttached
+              </label>
+              <label for="con2" class="con form-control">
+              <input type="checkbox" id="con2">IEC62196Type2Outlet
+              </label>
+              <label for="con3" class="con form-control">
+              <input type="checkbox" id="con3">IEC62196Type2CCS
+              </label>
+              <label for="con4" class="con form-control">
+              <input type="checkbox" id="con4">Tesla
+              </label>
+              <label for="con5" class="con form-control">
+              <input type="checkbox" id="con5">Chademo
+              </label>
+              <label for="con6" class="con form-control">
+              <input type="checkbox" id="con6">IEC62196Type1
+              </label>
+              <label for="con7" class="con form-control">
+              <input type="checkbox" id="con7">IEC62196Type1CCS
+              </label>
+              <label for="con8" class="con form-control">
+              <input type="checkbox" id="con8">IEC62196Type3
+              <label for="con9" class="con form-control">
+              <input type="checkbox" id="con9">GBT20234Part2
+              </label>
+              <label for="con10" class="con form-control">
+              <input type="checkbox" id="con10">GBT20234Part3
+              </label>
+              <label for="con11" class="con form-control">
+              <input type="checkbox" id="con11">IEC60309AC3PhaseRed
+              </label>
+              <label for="con12" class="con form-control">
+              <input type="checkbox" id="con12">IEC60309AC1PhaseBlue
+              <label for="con13" class="con form-control">
+              <input type="checkbox" id="con13">IEC60309DCWhite
+              <label for="con14" class="con form-control">
+              <input type="checkbox" id="con14">StandardHouseholdCountrySpecific
+            </div>
+        </div>
           <hr>
           <input class="form-check-input" type="checkbox" id="kabel" checked>
           <label class="form-check-label" for="kabel">

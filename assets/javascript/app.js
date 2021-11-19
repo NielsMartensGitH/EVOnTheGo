@@ -45,6 +45,12 @@ if(close) {
     })
 }
 
+/*=========== MULTI-SELECTOR DROPDOWN LIST ===================*/
+
+document.querySelector('.select-field').addEventListener('click',()=>{
+document.querySelector('.list').classList.toggle('show-dropdown');
+});
+/* ======================================================== */
 
 function submit(){
     removePreviousLayer();
