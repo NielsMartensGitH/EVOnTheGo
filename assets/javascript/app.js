@@ -89,6 +89,8 @@ async function updateMap(){
     fetchRoute();
 }
 
+// GET LAT/LON FROM STARTING POINT
+
 async function fetchBegin(begin) {
     try {
         const response = await fetch( "https://api.tomtom.com/search/2/search/"+ begin +".json?key=" + key);
@@ -100,6 +102,8 @@ async function fetchBegin(begin) {
         console.log(error);
     }
 }
+
+/* MAKE MAP MOVE TO STARTING LOCATION WHEN SUBMITTING ROUTE DETAILS*/
 
 function moveMap(lnglat) {
     map.flyTo({
@@ -118,6 +122,8 @@ async function fetchEinde(einde) {
         console.log(error);
     }
 }
+
+/* FETCHING ROUTE BASED ON LAT/LON FROM STARTING POINT AND DESTINATION*/
 
 async function fetchRoute() {
     try {
@@ -153,6 +159,7 @@ async function fetchRoute() {
     }
 }
 
+/* FETCH ALL STATIONS ON ROUTE WITHIN RADIUS */
 
 async function fetchStations(lon,lat) {
     try {
@@ -174,13 +181,14 @@ async function fetchStations(lon,lat) {
             .setLngLat(markerCoordinates)
             .setPopup(popup)
             .addTo(map);
-            markers.push(marker)
+            markers.push(marker) // store markers in array to remove all markers later when calculting new route!
             }
             console.log(element)
             let poi = element.poi.name;
             let address = element.address.freeformAddress;
             let chargingAvailabilityId = element.dataSources.chargingAvailability.id; 
-            // CREATE POPUP WITH TEXT
+           
+            /* CREATE POPUP WITH TEXT WHEN CLICKING ON CHARGING STATION SYMBOL ON MAP */
 
             let markerFunc = createMarker(loc,
             new tt.Popup({
@@ -195,9 +203,8 @@ async function fetchStations(lon,lat) {
             marker.togglePopup()
         });        
     } catch (error) {
-        coe.log(error);
+        console.log(error);
     }
-    console.log(markers);
 }
 
 /* =============== function to show charging info in sidebar when clicking on link in marker popup=======================*/
@@ -282,6 +289,9 @@ var displayRoute = function(geoJSON) {
         }
     }).flyTo()
 }
+
+
+/* REMOVING ROUTE LINE AND MARKERS ON MAP WHEN SEARCHING FOR NEW ROUTE*/
 
 function removePreviousLayer() {
     for (marker of markers) {
