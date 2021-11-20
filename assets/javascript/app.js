@@ -180,7 +180,6 @@ async function fetchStations(lon,lat) {
             let poi = element.poi.name;
             let address = element.address.freeformAddress;
             let chargingAvailabilityId = element.dataSources.chargingAvailability.id; 
-
             // CREATE POPUP WITH TEXT
 
             let markerFunc = createMarker(loc,
@@ -196,7 +195,7 @@ async function fetchStations(lon,lat) {
             marker.togglePopup()
         });        
     } catch (error) {
-        console.log(error);
+        coe.log(error);
     }
     console.log(markers);
 }
@@ -205,8 +204,15 @@ async function fetchStations(lon,lat) {
 
 async function showChargingInfo(id) {
     try {
+        let fullId
+        if (id.toString().length == 14) {
+            fullId = "0" + id;
+        }
+        else {
+            fullId = id;
+        } 
         document.getElementById("info").innerHTML = ""; 
-        const fullId = "0" + id; // need fixing because not all numbers start with zero!!!! 
+ 
         const response = await fetch("https://api.tomtom.com/search/2/chargingAvailability.json?chargingAvailability=" + fullId + "&key=" + key);
         const data = await response.json();
         const connectors = data.connectors;
