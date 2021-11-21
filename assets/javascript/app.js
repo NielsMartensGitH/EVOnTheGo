@@ -169,7 +169,6 @@ async function fetchRoute() {
             }                       
           }, 250)
         }
-        
         myLoop();
 
     } catch (error) {
@@ -271,14 +270,25 @@ async function showChargingInfo(id) {
 
 /* ============================== map integration ===============================*/
 
+
 let map = tt.map({
     key: key,
     container: "mymap",
     center: initialPlace,
+    interactive: true,
     zoom: 10,
     style: "https://api.tomtom.com/style/1/style/21.1.0-*?map=basic_main&traffic_incidents=incidents_day&traffic_flow=flow_relative0",
     
 });
+
+
+
+
+
+
+
+
+
 /* ============================ calculate route ==============================*/
 
 const createRoute = function(departure, arrival) {
@@ -290,6 +300,7 @@ const createRoute = function(departure, arrival) {
         displayRoute(geo)
     });
 }
+
 
 /* ================= DISPLAY ROUTE WITH LINE  ================== */
 

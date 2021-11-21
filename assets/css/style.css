@@ -140,12 +140,14 @@ h4 {
     position: relative;
 }
 
+
 .prog-container {
     background-color: #d5d8de;
     padding: 40px;
     margin-left: 25%;
     border-radius: 15px;
 }
+
 
 .show-progress {
     position: absolute;
