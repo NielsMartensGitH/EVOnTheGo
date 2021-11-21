@@ -137,6 +137,22 @@ h4 {
 .mymap {
     width: 100%;
     height: 100%;
+    position: relative;
+}
+
+.prog-container {
+    background-color: #bdbdc7;
+    padding: 40px;
+    margin-left: 25%;
+    border-radius: 15px;
+}
+
+.show-progress {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 50%;
+    z-index: 100;
 }
 
 .footer-row {

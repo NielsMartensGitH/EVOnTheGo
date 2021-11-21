@@ -1,6 +1,6 @@
 /* ============ API VARIABLES ===================*/
 
-const key = "MKB8TegqvUZ7OxWFWLC5zRepju2cstNK";  //dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc  2nd key when limit fetches has reached
+const key = "dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc";  //MKB8TegqvUZ7OxWFWLC5zRepju2cstNK   2nd key when limit fetches has reached
 const category = "electric%20vehicle%20station";
 const url = "https://api.tomtom.com/search/2/categorySearch/" + category + ".json?key=" + key;
 const initialPlace = [5.305940, 50.842289]; // place map displays first when opening app
@@ -133,26 +133,44 @@ async function fetchRoute() {
         points = data.routes[0].legs[0].points;
 
         test = [];
+        console.log(points.length + "pointLength")
         for(let i=0;i<points.length;i+=48){
             let lon = points[i].longitude;
             let lat = points[i].latitude;
             let loc = [lon,lat];
             test.push(lon+"|"+lat);
         }
-
+        
+        console.log(test + "TEST")
+        console.log(test.length + "testLENGTH")
         var i = 0;
         function myLoop() {         
-          setTimeout(function() {   
+          setTimeout(function() {
             let values = test[i].split("|");
-            fetchStations(values[0],values[1]) 
+            fetchStations(values[0],values[1])
+            point = i;
+            percentage = Math.ceil((point / test.length) * 100);
+            document.getElementById("progressbar").innerHTML = `${percentage}%`;
+            document.getElementById("progressbar").setAttribute("style", `width: ${percentage}%`)
+            document.getElementById("prog-container").classList.add("show-progress"); 
             i++;      
             if (i < test.length) {           
               myLoop();             
+            } else {
+                document.getElementById("progressbar").innerHTML = "100%"
+                document.getElementById("progressbar").setAttribute("style", "width: 100%")
+
+                setTimeout(() => {
+                    document.getElementById("prog-container").classList.remove("show-progress");
+                    document.getElementById("progressbar").innerHTML = "0%"
+                    document.getElementById("progressbar").setAttribute("style", "width: 0%")
+
+                }, 1000);
             }                       
           }, 250)
         }
         
-        myLoop();                   
+        myLoop();
 
     } catch (error) {
         console.log(error);
@@ -165,6 +183,7 @@ async function fetchStations(lon,lat) {
     try {
         const response = await fetch(url+ "&lat="+lat+"&lon="+lon+"&radius=2500&limit=2");
         const data = await response.json();
+        console.log(data)
         stations = data.results;
         stations.forEach(element => {
             console.log(element.address.freeformAddress,element.poi.name);
