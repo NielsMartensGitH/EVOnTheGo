@@ -30,6 +30,9 @@
   <!-- TOMTOM sdk for web MAPS CSS -->
   <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps.css'>
 
+  <!-- slider CSS -->
+
+  <link rel="stylesheet" href="assets/css/range.css">
 
   <title>EV On The Go</title>
 </head>
@@ -192,25 +195,22 @@
             </div>
           </div>
           <h4>Min and Max KW</h4>
-          <div id="ranges">
-            <input class="form-check-input" type="radio" name="range" id="range100">
-            <label class="form-check-label" for="range100">< 100KW</label>
-            <br>
-            <input class="form-check-input" type="radio" name="range" id="range200">
-            <label class="form-check-label" for="range200">> 100KW and < 200KW</label>
-            <br>
-            <input class="form-check-input" type="radio" name="range" id="range300">
-            <label class="form-check-label" for="range300">> 200KW and < 300KW</label>
-            <br>
-            <input class="form-check-input" type="radio" name="range" id="range400">
-            <label class="form-check-label" for="range400">> 300KW and < 400KW</label>
-            <br>
-            <input class="form-check-input" type="radio" name="range" id="range500">
-            <label class="form-check-label" for="range500">> 400KW and < 500KW</label>
-            <br>
-            <input class="form-check-input" type="radio" name="range" id="range600">
-            <label class="form-check-label" for="range600">> 500KW</label>
-          </div>
+          <div class="wrapper">
+            <div class="values">
+                <span id="range1">
+                    0
+                </span>
+                <span> &dash; </span>
+                <span id="range2">
+                    100
+                </span>
+            </div>
+            <div class="container-slider">
+                <div class="slider-track"></div>
+                <input type="range" min="0" max="500" value="0" id="slider-1" step="50" oninput="slideOne()">
+                <input type="range" min="0" max="500" value="500" id="slider-2" step="50" oninput="slideTwo()">
+            </div>
+        </div>
           <hr>
           <button class="form-control" onclick="submit()">Bereken Route</button>
         </div>
@@ -247,6 +247,7 @@
     </div>
   </section>
   <script src="assets/javascript/app.js"></script>
+  <script src="assets/javascript/slider.js"></script>
 </body>
 
 </html>
