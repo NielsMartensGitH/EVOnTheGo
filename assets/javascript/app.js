@@ -49,9 +49,10 @@ if(close) {
 /*=========== MULTI-SELECTOR DROPDOWN LIST ===================*/
 
 document.querySelector('.select-field').addEventListener('click',()=>{
+console.log("clicked");
 document.querySelector('.list').classList.toggle('show-dropdown');
-
 });
+
 /* ======================================================== */
 
 function submit(){
@@ -304,13 +305,6 @@ let map = tt.map({
     style: "https://api.tomtom.com/style/1/style/21.1.0-*?map=basic_main&traffic_incidents=incidents_day&traffic_flow=flow_relative0",
     
 });
-
-
-
-
-
-
-
 
 
 /* ============================ calculate route ==============================*/
