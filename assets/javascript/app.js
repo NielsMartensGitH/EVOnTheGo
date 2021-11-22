@@ -80,25 +80,10 @@ function submit(){
     });
     params = params.substring(0, params.length - 1);
 
-    const range100 = document.getElementById("range100").checked;
-    const range200 = document.getElementById("range200").checked;
-    const range300 = document.getElementById("range300").checked;
-    const range400 = document.getElementById("range400").checked;
-    const range500 = document.getElementById("range500").checked;
-    const range600 = document.getElementById("range600").checked;
+const minRange = document.getElementById("range1").innerHTML;
+const maxRange = document.getElementById("range2").innerHTML;
 
-    if(range100)
-     params += "&minPowerKW=0&maxPowerKW=100";
-    if(range200)
-    params += "&minPowerKW=100&maxPowerKW=200";
-    if(range300)
-    params += "&minPowerKW=200&maxPowerKW=300";
-    if(range400)
-    params += "&minPowerKW=300&maxPowerKW=400";
-    if(range500)
-    params += "&minPowerKW=400&maxPowerKW=500";
-    if(range600)
-    params += "&minPowerKW=500";
+    params += "&minPowerKW=" + minRange +"&maxPowerKW=" +maxRange;
 
     updateMap();
 }
