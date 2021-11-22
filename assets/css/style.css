@@ -140,11 +140,15 @@ h4 {
 }
 
 .mymap {
-    width: 100%;
-    height: 100%;
+    border-radius: 15px;
+    height: 79vh;
     position: relative;
 }
 
+#linkedin{
+    text-decoration: none !important;
+    color: #030202 !important;
+}
 
 .prog-container {
     background-color: #d5d8de;
