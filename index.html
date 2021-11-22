@@ -58,7 +58,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            About us
+            <h2>LinkedIn profiles:</h2>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/nick-geysels-502370199/" class="linkedin">Nick Geysels</a></li>
+              <li><a href="https://www.linkedin.com/in/niels-martens-691bba1b6/" class="linkedin">Niels Martens</a></li>
+              <li><a href="https://www.linkedin.com/in/thomas-kriekels-423974221/" class="linkedin">Thomas Kriekels</a></li>
+            </ul>
+            <h2>Github</h2>
+            <p><a href="Github">Click here</a></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -86,7 +93,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -185,25 +191,25 @@
               </label>
             </div>
           </div>
-          <h4>Minimum and Maximum KW</h4>
+          <h4>Min and Max KW</h4>
           <div id="ranges">
             <input class="form-check-input" type="radio" name="range" id="range100">
-            <label class="form-check-label" for="range100">Under 100KW</label>
+            <label class="form-check-label" for="range100">< 100KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range200">
-            <label class="form-check-label" for="range200">Between 100KW and 200KW</label>
+            <label class="form-check-label" for="range200">> 100KW and < 200KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range300">
-            <label class="form-check-label" for="range300">Between 200KW and 300KW</label>
+            <label class="form-check-label" for="range300">> 200KW and < 300KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range400">
-            <label class="form-check-label" for="range400">Between 300KW and 400KW</label>
+            <label class="form-check-label" for="range400">> 300KW and < 400KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range500">
-            <label class="form-check-label" for="range500">Between 400KW and 500KW</label>
+            <label class="form-check-label" for="range500">> 400KW and < 500KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range600">
-            <label class="form-check-label" for="range600">Over 500KW</label>
+            <label class="form-check-label" for="range600">> 500KW</label>
           </div>
           <hr>
           <button class="form-control" onclick="submit()">Bereken Route</button>
