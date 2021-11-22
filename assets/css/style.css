@@ -52,6 +52,11 @@ h4 {
     margin: 15px;
 }
 
+.panes-container {
+    min-height: 78vh;
+
+}
+
 .left-pane {
     background-color: #d5d8de;
     color: black;
@@ -89,7 +94,7 @@ h4 {
 }
 
 .con{
-    display: block;
+    /* display: block; */
     padding-left: 0;
 }
 
@@ -157,9 +162,13 @@ h4 {
     z-index: 100;
 }
 
+.footer {
+    
+}
+
 .footer-row {
-    /* min-height: 100%; */
     background-color: #030202;
+
 }
 
 .footer-row a {

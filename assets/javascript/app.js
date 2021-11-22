@@ -49,6 +49,7 @@ if(close) {
 
 document.querySelector('.select-field').addEventListener('click',()=>{
 document.querySelector('.list').classList.toggle('show-dropdown');
+
 });
 /* ======================================================== */
 
