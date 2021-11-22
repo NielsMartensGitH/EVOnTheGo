@@ -32,14 +32,7 @@ if(closeTopBar) {
 /* ========== SIDEBAR TOGGLE================*/
 
 const sideBar = document.getElementById('sidebar');
-const sideBarLink = document.getElementById('sidebarlink');
 const close = document.getElementById('close');
-
-if(sideBarLink) {
-    sideBarLink.addEventListener('click', () => {
-        sideBar.classList.add('show-sidebar')
-    })
-}
 
 if(close) {
     close.addEventListener('click', () => {
@@ -50,7 +43,6 @@ if(close) {
 /*=========== MULTI-SELECTOR DROPDOWN LIST ===================*/
 
 document.querySelector('.select-field').addEventListener('click',()=>{
-console.log("clicked");
 document.querySelector('.list').classList.toggle('show-dropdown');
 });
 
@@ -60,26 +52,19 @@ function submit(){
     removePreviousLayer();
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
-    //connectorType = document.getElementById("connector").value;
-    // kabel = document.getElementById("kabel").checked;
-/*
-    console.log("Begin: "+begin);
-    console.log("Einde: "+einde);
-    console.log("Connector: "+connector);
-    console.log("Beschikt over kabel: "+kabel);
-*/
-    let connectors = document.getElementById("connector").children;//[0].checked;
 
+    let connectors = document.getElementById("connector").children;//[0].checked; // HTMLCollection
     let i=0;
     params = "&connectorSet=";
     connectors = Array.prototype.slice.call(connectors);
     connectors.forEach(connector => {
-        if(i % 3 == 0 && connector.checked){
+        if(i % 3 == 0 && connector.checked){ // loop over elke input value uit onze connectors array
             params += connector.value + ",";
         }
         i++;
     });
-    params = params.substring(0, params.length - 1);
+    console.log(params)
+    params = params.substring(0, params.length - 1); // laatste komma weghalen
 
 const minRange = document.getElementById("range1").innerHTML;
 const maxRange = document.getElementById("range2").innerHTML;
@@ -93,7 +78,7 @@ async function updateMap(){
     try {
         await fetchBegin(begin);
         await fetchEinde(einde); 
-        createRoute(beginlon+","+beginlat, eindelon+","+eindelat);
+        createRoute(beginlon+","+beginlat, eindelon+","+eindelat); // HIERMEE WORDT ONZE ROUTE BEREKEND EN EEN GEDISPLAYED
     } catch (error) {
         console.log(error);
     }
@@ -203,7 +188,7 @@ async function fetchStations(lon,lat) {
 
             function createMarker(markerCoordinates, popup) {
                 let markerElement = document.createElement("div");
-                markerElement.innerHTML = '<i style="color: #0D1E50;" class="fas fa-charging-station"></i>'; 
+                markerElement.innerHTML = '<i style="color: #0D1E50;" class="fas fa-charging-station"></i>';  // ICOON CHARGING STATION
                 let marker  = new tt.Marker({
                     "element": markerElement
             })
@@ -293,7 +278,7 @@ let map = tt.map({
 });
 
 
-/* ============================ calculate route ==============================*/
+/* ============================ calculate route and convert to GEOJSON DATA==============================*/
 
 const createRoute = function(departure, arrival) {
     tt.services.calculateRoute({
