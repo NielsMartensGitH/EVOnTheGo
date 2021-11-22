@@ -8,6 +8,7 @@ const departurePoint = "5.305940,50.842289"; // Ulbeek EXAMPLE ONLY!
 const arrivalPoint = "2.913830,51.225159"; // Oostende EXAMPLE ONLY!
 var beginlat,beginlon,eindelat,eindelon,distance;
 var markers = [];
+var params = "";
 
 /* ========== TOPBAR TOGGLE================*/
 
@@ -56,7 +57,7 @@ function submit(){
     removePreviousLayer();
     begin = document.getElementById("begin").value;
     einde = document.getElementById("einde").value;
-    // connectorType = document.getElementById("connector").value;
+    //connectorType = document.getElementById("connector").value;
     // kabel = document.getElementById("kabel").checked;
 /*
     console.log("Begin: "+begin);
@@ -64,6 +65,19 @@ function submit(){
     console.log("Connector: "+connector);
     console.log("Beschikt over kabel: "+kabel);
 */
+    let connectors = document.getElementById("connector").children;//[0].checked;
+
+    let i=0;
+    params = "&connectorSet=";
+    connectors = Array.prototype.slice.call(connectors);
+    connectors.forEach(connector => {
+        if(i % 3 == 0 && connector.checked){
+            params += connector.value + ",";
+        }
+        i++;
+    });
+    params = params.substring(0, params.length - 1);
+
     const range100 = document.getElementById("range100").checked;
     const range200 = document.getElementById("range200").checked;
     const range300 = document.getElementById("range300").checked;
@@ -79,10 +93,6 @@ async function updateMap(){
         await fetchBegin(begin);
         await fetchEinde(einde); 
         createRoute(beginlon+","+beginlat, eindelon+","+eindelat);
-
-        /*DISABLE IF NEEDED (debugging)*//*
-        targeturl = "https://api.tomtom.com/routing/1/calculateRoute/"+beginlat+","+beginlon+":"+eindelat+","+eindelon+"/json?key=dnA4PR9uKOU3Ltk0V7Fb8A5t6vHnsguc&instructionsType=text";
-        window.open(targeturl, '_blank').focus();*/
     } catch (error) {
         console.log(error);
     }
@@ -133,7 +143,7 @@ async function fetchRoute() {
         points = data.routes[0].legs[0].points;
 
         test = [];
-        console.log(points.length + "pointLength")
+        //console.log(points.length + "pointLength")
         for(let i=0;i<points.length;i+=48){
             let lon = points[i].longitude;
             let lat = points[i].latitude;
@@ -141,8 +151,8 @@ async function fetchRoute() {
             test.push(lon+"|"+lat);
         }
         
-        console.log(test + "TEST")
-        console.log(test.length + "testLENGTH")
+        //console.log(test + "TEST")
+        //console.log(test.length + "testLENGTH")
         var i = 0;
         function myLoop() {         
           setTimeout(function() {
@@ -167,7 +177,7 @@ async function fetchRoute() {
 
                 }, 1000);
             }                       
-          }, 250)
+          }, 300)
         }
         myLoop();
 
@@ -180,12 +190,12 @@ async function fetchRoute() {
 
 async function fetchStations(lon,lat) {
     try {
-        const response = await fetch(url+ "&lat="+lat+"&lon="+lon+"&radius=2500&limit=2");
+        const response = await fetch(url+ "&lat="+lat+"&lon="+lon+"&radius=2500&limit=2" + params);
         const data = await response.json();
-        console.log(data)
+        //console.log(data)
         stations = data.results;
         stations.forEach(element => {
-            console.log(element.address.freeformAddress,element.poi.name);
+            //console.log(element.address.freeformAddress,element.poi.name);
             let lon = element.position.lon;
             let lat = element.position.lat;
             loc = [lon,lat];
@@ -201,7 +211,7 @@ async function fetchStations(lon,lat) {
             .addTo(map);
             markers.push(marker) // store markers in array to remove all markers later when calculting new route!
             }
-            console.log(element)
+            //console.log(element)
             let poi = element.poi.name;
             let address = element.address.freeformAddress;
             let chargingAvailabilityId = element.dataSources.chargingAvailability.id; 
@@ -246,7 +256,7 @@ async function showChargingInfo(id) {
             <b>Type:</b> ${connector.type} <br>
             <b>Total Charging points:</b> ${connector.total}<br>`;
             let powerLevel = connector.availability.perPowerLevel;
-            console.log(powerLevel);  
+            //console.log(powerLevel);  
             powerLevel.forEach(level => {
                 document.getElementById("info").innerHTML += `
                 <b>PowerKW:</b> ${level.powerKW} <br>

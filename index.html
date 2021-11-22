@@ -5,32 +5,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
- <!--================ TOMTOM sdk for web MAPS implementation ========================= -->
 
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps-web.min.js"></script>
+  <!--================ TOMTOM sdk for web MAPS implementation ========================= -->
 
- <!--================ TOMTOM sdk for web SERVICES implementation ========================= -->
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps-web.min.js"></script>
 
-    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/services/services-web.min.js"></script>
+  <!--================ TOMTOM sdk for web SERVICES implementation ========================= -->
 
-    
-<!--============================== FONTAWESOME ================================-->    
+  <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/services/services-web.min.js"></script>
+
+
+  <!--============================== FONTAWESOME ================================-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
     integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- ==================================  Bootstrap5 =======================-->    
+  <!-- ==================================  Bootstrap5 =======================-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<!-- =============== CUSTOM CSS ============== -->    
+  <!-- =============== CUSTOM CSS ============== -->
   <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- TOMTOM sdk for web MAPS CSS -->  
+  <!-- TOMTOM sdk for web MAPS CSS -->
   <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.15.0/maps/maps.css'>
-  
-  
+
+
   <title>EV On The Go</title>
 </head>
 
@@ -102,54 +102,82 @@
           <h4>Connector type</h4>
           <div class="multi-selector">
             <div class="select-field">
-              <input type="text" placeholder="Choose Connector Type" disabled="disabled" class="input-selector form-control">
+              <input type="text" placeholder="Choose Connector Type" disabled="disabled"
+                class="input-selector form-control">
               <!-- <span class="down-arrow">&blacktriangledown;</span> -->
             </div>
             <div class="list" id="connector">
-              <label for="con1" class="con form-control">
-              <input type="checkbox" value="con1">IEC62196Type2CableAttached
+              <input type="checkbox" value="IEC62196Type2CableAttached">
+              <label for="con1">
+                IEC62196Type2CableAttached
               </label>
-              <label for="con2" class="con form-control">
-              <input type="checkbox" value="con2">IEC62196Type2Outlet
+              <br>
+              <input type="checkbox" value="IEC62196Type2Outlet">
+              <label for="con2">
+                IEC62196Type2Outlet
               </label>
-              <label for="con3" class="con form-control">
-              <input type="checkbox" value="con3">IEC62196Type2CCS
+              <br>
+              <input type="checkbox" value="IEC62196Type2CCS">
+              <label for="con3">
+                IEC62196Type2CCS
               </label>
-              <label for="con4" class="con form-control">
-              <input type="checkbox" value="con4">Tesla
+              <br>
+              <input type="checkbox" value="Tesla">
+              <label for="con4">
+                Tesla
               </label>
-              <label for="con5" class="con form-control">
-              <input type="checkbox" value="con5">Chademo
+              <br>
+              <input type="checkbox" value="Chademo">
+              <label for="con5">
+                Chademo
               </label>
-              <label for="con6" class="con form-control">
-              <input type="checkbox" value="con6">IEC62196Type1
+              <br>
+              <input type="checkbox" value="IEC62196Type1">
+              <label for="con6">
+                IEC62196Type1
               </label>
-              <label for="con7" class="con form-control">
-              <input type="checkbox" value="con7">IEC62196Type1CCS
+              <br>
+              <input type="checkbox" value="IEC62196Type1CCS">
+              <label for="con7">
+                IEC62196Type1CCS
               </label>
-              <label for="con8" class="con form-control">
-              <input type="checkbox" value="con8">IEC62196Type3
+              <br>
+              <input type="checkbox" value="IEC62196Type3">
+              <label for="con8">
+                IEC62196Type3
               </label>
-              <label for="con9" class="con form-control">
-              <input type="checkbox" value="con9">GBT20234Part2
+              <br>
+              <input type="checkbox" value="GBT20234Part2">
+              <label for="con9">
+                GBT20234Part2
               </label>
-              <label for="con10" class="con form-control">
-              <input type="checkbox" value="con10">GBT20234Part3
+              <br>
+              <input type="checkbox" value="GBT20234Part3">
+              <label for="con10">
+                GBT20234Part3
               </label>
-              <label for="con11" class="con form-control">
-              <input type="checkbox" value="con11">IEC60309AC3PhaseRed
+              <br>
+              <input type="checkbox" value="IEC60309AC3PhaseRed">
+              <label for="con11">
+                IEC60309AC3PhaseRed
               </label>
-              <label for="con12" class="con form-control">
-              <input type="checkbox" value="con12">IEC60309AC1PhaseBlue
+              <br>
+              <input type="checkbox" value="IEC60309AC1PhaseBlue">
+              <label for="con12">
+                IEC60309AC1PhaseBlue
               </label>
-              <label for="con13" class="con form-control">
-              <input type="checkbox" value="con13">IEC60309DCWhite
+              <br>
+              <input type="checkbox" value="IEC60309DCWhite">
+              <label for="con13">
+                IEC60309DCWhite
               </label>
-              <label for="con14" class="con form-control">
-              <input type="checkbox" value="con14">StandardHouseholdCountrySpecific
-            </label>
+              <br>
+              <input type="checkbox" value="StandardHouseholdCountrySpecific">
+              <label for="con14">
+                StandardHouseholdCountrySpecific
+              </label>
             </div>
-        </div>
+          </div>
 
           <!-- =============== NIET NODIG =============== -->
           <!-- <hr>  
@@ -187,8 +215,9 @@
               <div id="prog-container" class="prog-container">
                 <span style="color:black;">Please wait a moment...</span>
                 <div class="progress">
-                  <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressbar" role="progressbar" style="width: 0%;">0%</div>
-              </div>
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressbar"
+                    role="progressbar" style="width: 0%;">0%</div>
+                </div>
               </div>
             </div>
           </div>
