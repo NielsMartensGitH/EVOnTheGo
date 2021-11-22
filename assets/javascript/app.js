@@ -85,6 +85,19 @@ function submit(){
     const range500 = document.getElementById("range500").checked;
     const range600 = document.getElementById("range600").checked;
 
+    if(range100)
+     params += "&minPowerKW=0&maxPowerKW=100";
+    if(range200)
+    params += "&minPowerKW=100&maxPowerKW=200";
+    if(range300)
+    params += "&minPowerKW=200&maxPowerKW=300";
+    if(range400)
+    params += "&minPowerKW=300&maxPowerKW=400";
+    if(range500)
+    params += "&minPowerKW=400&maxPowerKW=500";
+    if(range600)
+    params += "&minPowerKW=500";
+
     updateMap();
 }
 
