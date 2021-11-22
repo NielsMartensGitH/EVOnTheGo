@@ -75,7 +75,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Page Instructions
+            <h2>What do i do?</h2>
+            <p>Fill out the form with the following details:</p>
+            <ul><li>Starting point</li>
+            <li>Destination</li>
+            <li>Connector type(s)</li>
+            <li>Charging speeds</li></ul>
+            <h2>What will happen?</h2>
+            <p>Our application will find all charging stations on/near your route that comply with the given filters. To find more information about the charging point you can then click the chosen point and will be provided with every detail we have.</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -95,9 +102,9 @@
               <h5>Connector Types: </h5>
             </div>
           </div>
-          <h4>Begin</h4>
+          <h4>Start</h4>
           <input type="text" id="begin" class="form-control">
-          <h4>Einde</h4>
+          <h4>Destination</h4>
           <input type="text" id="einde" class="form-control">
           <h4>Connector type</h4>
           <div class="multi-selector">
@@ -178,33 +185,25 @@
               </label>
             </div>
           </div>
-
-          <!-- =============== NIET NODIG =============== -->
-          <!-- <hr>  
-          <input class="form-check-input" type="checkbox" id="kabel" checked>
-          <label class="form-check-label" for="kabel">
-            Beschik over een connector
-          </label>
-          <hr> -->
-          <h4>Minimum en Maximum KW</h4>
+          <h4>Minimum and Maximum KW</h4>
           <div id="ranges">
             <input class="form-check-input" type="radio" name="range" id="range100">
-            <label class="form-check-label" for="range100">Minder dan 100KW</label>
+            <label class="form-check-label" for="range100">Under 100KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range200">
-            <label class="form-check-label" for="range200">Tussen 100KW en 200KW</label>
+            <label class="form-check-label" for="range200">Between 100KW and 200KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range300">
-            <label class="form-check-label" for="range300">Tussen 200KW en 300KW</label>
+            <label class="form-check-label" for="range300">Between 200KW and 300KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range400">
-            <label class="form-check-label" for="range400">Tussen 300KW en 400KW</label>
+            <label class="form-check-label" for="range400">Between 300KW and 400KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range500">
-            <label class="form-check-label" for="range500">Tussen 400KW en 500KW</label>
+            <label class="form-check-label" for="range500">Between 400KW and 500KW</label>
             <br>
             <input class="form-check-input" type="radio" name="range" id="range600">
-            <label class="form-check-label" for="range600">Meer dan 500KW</label>
+            <label class="form-check-label" for="range600">Over 500KW</label>
           </div>
           <hr>
           <button class="form-control" onclick="submit()">Bereken Route</button>

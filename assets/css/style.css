@@ -141,7 +141,7 @@ h4 {
 
 .mymap {
     border-radius: 15px;
-    height: 75vh;
+    height: 79vh;
     position: relative;
 }
 
@@ -160,10 +160,6 @@ h4 {
     top: 30%;
     width: 50%;
     z-index: 100;
-}
-
-.footer {
-    
 }
 
 .footer-row {
